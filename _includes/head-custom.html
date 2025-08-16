@@ -1,9 +1,0 @@
-<script>
-  // Override title after page load for clean browser titles
-  document.addEventListener('DOMContentLoaded', function() {
-    if (document.querySelector('h1.dynamic-title')) {
-      var cleanTitle = document.querySelector('h1.dynamic-title').textContent.trim();
-      document.title = cleanTitle + ' | {{ site.title }}';
-    }
-  });
-</script>
