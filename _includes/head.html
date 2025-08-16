@@ -1,0 +1,43 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2a1e6b">
+
+<!-- Custom Title Logic - This fixes your issue -->
+<title>
+  {%- if page.title -%}
+    {{ page.title | strip_html | strip }} | {{ site.title }}
+  {%- else -%}
+    {{ site.title }}
+  {%- endif -%}
+</title>
+
+<!-- SEO Plugin (excluding title since we handle it above) -->
+{% seo title=false %}
+
+<!-- Keep all other head elements from Chirpy theme -->
+{% if site.img_cdn contains site.url %}
+  {% assign favicon_path = '/assets/img/favicons' %}
+{% else %}
+  {% assign favicon_path = site.img_cdn | append: '/img/favicons' %}
+{% endif %}
+
+<link rel="apple-touch-icon" sizes="180x180" href="{{ favicon_path }}/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ favicon_path }}/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ favicon_path }}/favicon-16x16.png">
+<link rel="manifest" href="{{ favicon_path }}/site.webmanifest">
+<link rel="shortcut icon" href="{{ favicon_path }}/favicon.ico">
+
+<link rel="stylesheet" href="{{ '/assets/css/jekyll-theme-chirpy.css' | relative_url }}">
+
+{% if site.google_analytics.id and jekyll.environment == 'production' %}
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials">
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics.id }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics.id }}');
+  </script>
+{% endif %}
