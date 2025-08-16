@@ -1,0 +1,13 @@
+<!-- Override page title to remove HTML tags in browser tab -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the current page title and remove HTML tags
+    var title = document.title;
+    var cleanTitle = title.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+    
+    // Update the browser title if it contained HTML
+    if (title !== cleanTitle) {
+        document.title = cleanTitle;
+    }
+});
+</script>
