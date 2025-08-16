@@ -1,0 +1,24 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Use seo_title for browser tab, fallback to stripped title -->
+<title>
+{%- if page.seo_title -%}
+  {{ page.seo_title }} | {{ site.title }}
+{%- elsif page.title -%}
+  {{ page.title | strip_html }} | {{ site.title }}
+{%- else -%}
+  {{ site.title }}
+{%- endif -%}
+</title>
+
+{% seo title=false %}
+
+<!-- Essential Chirpy CSS - this prevents site breaking -->
+<link rel="stylesheet" href="{{ '/assets/css/jekyll-theme-chirpy.css' | relative_url }}">
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/img/favicons/apple-touch-icon.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicons/favicon-32x32.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/img/favicons/favicon-16x16.png' | relative_url }}">
+<link rel="shortcut icon" href="{{ '/assets/img/favicons/favicon.ico' | relative_url }}">
